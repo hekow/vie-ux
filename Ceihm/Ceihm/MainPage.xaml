@@ -5,7 +5,7 @@
              x:Class="Ceihm.MainPage">
 
 
-	<Grid>
+    <Grid RowSpacing="0">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
@@ -13,7 +13,7 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="2*"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
@@ -21,24 +21,23 @@
 		</Grid.RowDefinitions>
 		
 		
-		<Button Text="Retour"  Grid.Row="0" HorizontalOptions="End" FontSize="Large"/>
-		<Label Text="Signaler un incident" Grid.Row="1" HorizontalOptions="Center" FontSize="38"/>
+		<Button Text="Retour"  Grid.Row="0" HorizontalOptions="End" FontSize="Medium"/>
+		<Label Text="Signaler un incident" Grid.Row="1" HorizontalOptions="Center" FontSize="24"/>
 
 
-		<Grid Grid.Row="2" >
+        <Grid Grid.Row="2">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
+				<RowDefinition Height="5*"/>
+				<RowDefinition Height="3*"/>
+				<RowDefinition Height="5*"/>
 			</Grid.RowDefinitions>
-			
-			<Label Text="Catégorie" FontSize="Large"/>
-			<Grid Grid.Row="0" Grid.Column="1">
+
+            <Label Text="Catégorie" FontSize="Large" VerticalOptions="Center"/>
+            <Grid Grid.Row="0" Grid.Column="1" RowSpacing="0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
@@ -46,22 +45,63 @@
 
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
+					<RowDefinition Height="2*"/>
 					<RowDefinition Height="*"/>
-					<RowDefinition Height="Auto"/>
 
 				</Grid.RowDefinitions>
-				<Image Grid.Row="0" Source="heart.png" HorizontalOptions="Center" HeightRequest="60"/>
-				<Label Grid.Row="1" Text="Médical" HorizontalOptions="Center" FontSize="Default"/>
-				<Image Grid.Column="1" Grid.Row="0" Source="wrench.png" HorizontalOptions="Center" HeightRequest="60"/>
-				<Label Grid.Column="1" Grid.Row="1" Text="Technique" HorizontalOptions="Center" FontSize="Default"/>
-				<Image Grid.Column="2" Grid.Row="0" Source="family.png" HorizontalOptions="Center" HeightRequest="60"/>
-				<Label Grid.Column="2" Grid.Row="1" Text="Familial" HorizontalOptions="Center" FontSize="Default"/>
+                <Frame Padding="2" OutlineColor="Transparent" x:Name="frame1" HorizontalOptions="FillAndExpand" >
+                  <Frame Padding="0">
+
+                    <Image Source="heart.png" HorizontalOptions="FillAndExpand" HeightRequest="100" x:Name="img1">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnTapGestureRecognizerTapped"
+                                NumberOfTapsRequired="1" /> 
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Frame>
+
+                </Frame>
+				
+                <Label Grid.Row="1" Text="Médical" HorizontalOptions="Center" FontSize="Small"/>
+                <Frame Padding="2"
+                  Grid.Column="1" Grid.Row="0" x:Name="frame2" HorizontalOptions="FillAndExpand" 			IsClippedToBounds="true"
+ >
+                  <Frame Padding="0">
+
+                    <Image  Source="wrench.png" HorizontalOptions="Center" HeightRequest="100" x:Name="img2">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnTapGestureRecognizerTapped"
+                                NumberOfTapsRequired="1" />     
+                        </Image.GestureRecognizers>
+                     </Image>
+                  </Frame>
+                </Frame>
+
+                <Label Grid.Column="1" Grid.Row="1" Text="Technique" HorizontalOptions="Center" FontSize="Small"/>
+                <Frame Grid.Column="2" Grid.Row="0" Padding="2"  x:Name="frame3" HorizontalOptions="FillAndExpand" >
+                  <Frame Padding="0">
+                    
+                    <Image  Source="family.png" HorizontalOptions="Center" HeightRequest="100" x:Name="img3">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                Tapped="OnTapGestureRecognizerTapped"
+                NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                  </Frame>
+
+                </Frame>
+
+                <Label Grid.Column="2" Grid.Row="1" Text="Familial" HorizontalOptions="Center" FontSize="Small"/>
 			</Grid>
-			<Label Text="Titre" Grid.Row="1" FontSize="Large"/>
-			<Entry Grid.Row="1" Grid.Column="1" FontSize="Large"/>
-			<Label Text="Priorité" Grid.Row="2" FontSize="Large"/>
-			
-			<Grid Grid.Row="2" Grid.Column="1">
+            
+			<Label Text="Titre" Grid.Row="1" FontSize="Large" VerticalOptions="Center"/>
+            <Entry Grid.Row="1" Grid.Column="1" FontSize="Large" VerticalOptions="Center"/>
+
+            <Label Text="Priorité" Grid.Row="2" FontSize="Large" VerticalOptions="Center"/>
+            <Grid Grid.Row="2" Grid.Column="1" VerticalOptions="Center">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
@@ -71,7 +111,7 @@
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
-				<Slider Minimum="0" Maximum="2" Grid.ColumnSpan="3" />
+                <Slider Minimum="0" Maximum="2" Grid.ColumnSpan="3" x:name="SliderMain" ValueChanged="OnSliderValueChanged"/>
 				<Label Grid.Row="1" Grid.Column="0" Text="Faible" HorizontalOptions="Center" FontSize="Default"/>
 				<Label Grid.Row="1" Grid.Column="1" Text="Moyen" HorizontalOptions="Center" FontSize="Default"/>
 				<Label Grid.Row="1" Grid.Column="2" Text="Elevée" HorizontalOptions="Center" FontSize="Default"/>
@@ -81,7 +121,7 @@
 
 		<Label Grid.Row="3" Text="Description" FontSize="Large"/>
 		<Editor Grid.Row="4" />
-		<Button Grid.Row="5" Text="Valider" FontSize="38"/>
+		<Button Grid.Row="5" Text="Valider" FontSize="38" Clicked="Button_Clicked"/>
 
 
 	</Grid>
